@@ -49,6 +49,7 @@ def calculate_risk_rating
     return "D"
   elsif total <= 30
     return "E"
+  end
 end
 
 def calculate_fhrs_score_from_total(total)
@@ -92,7 +93,7 @@ def calculate_food_hygiene_rating
 end
 
 def missing_values?
-  @all_results.any? { |value| value == nil } # array version
+  @all_results.any? { |value| value == 666 } # 666 is the blank default value in the :start layout
 end
 
 # Routes
@@ -104,19 +105,19 @@ end
 get "/result" do
 
   @all_results = [
-    params[:type],
-    params[:consumers],
-    params[:method],
-    params[:hygiene],
-    params[:structure],
-    params[:confidence],
-    params[:significance]
+    params[:type].to_i,
+    params[:consumers].to_i,
+    params[:method].to_i,
+    params[:hygiene].to_i,
+    params[:structure].to_i,
+    params[:confidence].to_i,
+    params[:significance].to_i
   ]
 
   @fhrs_results = [
-    params[:hygiene],
-    params[:structure],
-    params[:confidence]
+    params[:hygiene].to_i,
+    params[:structure].to_i,
+    params[:confidence].to_i
   ]
 
   if missing_values? # returns true if one or more values is nil
