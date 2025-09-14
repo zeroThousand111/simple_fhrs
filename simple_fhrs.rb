@@ -5,6 +5,16 @@ require "sinatra"
 require "sinatra/reloader" if development?
 require "tilt/erubi"
 
+# Constants
+
+FREQUENCIES_OF_INSPECTION = {
+  A: "At least every six months",
+  B: "At least every 12 months",
+  C: "At least every 18 months",
+  D: "At least every 24 months",
+  E: "Alternative enforcement strategy every 3 years"
+}.freeze
+
 # Config
 
 configure do
@@ -125,6 +135,6 @@ DEVELOPMENT IDEAS
  - create tests in simple_fhrs_test.rb to future proof against regression
    - test out all combinations of possible scores to ensure that the underlying logic to calculate both risk rating and FHRS scores isn't broken?
  - return a string value of inspection frequency as well as the letter score for risk rating for display in :result
- - return one of 6 images instead of an Integer for the FHRS stars in :result
+ - return one of 6 images instead of/in addition to an Integer for the FHRS stars in :result
  - 
 =end
