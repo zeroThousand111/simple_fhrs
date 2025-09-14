@@ -37,7 +37,7 @@ What is the FHRS algorithm?
 =end
 
 def calculate_risk_rating
-  total = @all_results.sum # array version
+  puts total = @all_results.sum
 
   if total >= 92
     return "A"
@@ -86,8 +86,8 @@ def calculate_food_hygiene_rating
   total = @fhrs_results.sum
   highest_value = @fhrs_results.max
 
-  total_score = calculate_fhrs_score_from_total
-  highest_value_score = calculate_fhrs_score_from_highest_value
+  total_score = calculate_fhrs_score_from_total(total)
+  highest_value_score = calculate_fhrs_score_from_highest_value(highest_value)
 
   [total_score, highest_value_score].min # return the lowest of the two ratings
 end
@@ -99,7 +99,7 @@ end
 # Routes
 
 get "/" do
-  erb :start
+  erb :input
 end
 
 get "/result" do

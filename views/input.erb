@@ -1,0 +1,88 @@
+<form method="get" action="/result" name="input">
+
+  <h2>Potential Hazard</h2>
+
+  <label>Type of Foods & Method of Handling:</label>
+  <select name="type">
+    <option value="666"> - </option>
+    <option value="5">5 Handling low risk foods</option> 
+    <option value="10">10 Handling pre-packed high risk foods & caterers less than 20 meals/day</option>
+    <option value="30">30 Preparation/handling of open high risk foods</option>
+    <option value="40">40 Manufacture of high risk foods, wholesalers & packers who re-wrap RTE</option>
+  </select>
+
+  <br>
+
+  <label>Comsumers at Risk:</label>
+  <select name="consumers">
+    <option value="666"> - </option>
+    <option value="0">0 Very few - less than 20</option>
+    <option value="5">5 Few - High street shop, restaurant, supermarket</option>
+    <option value="10">10 Superstore, hypermarket, airport, motorway</option>
+    <option value="15">15 Manufacturer with national/international distribution</option>
+  </select>
+
+  <br>
+
+  <label>Method of Processing:</label>
+  <select name="method">
+    <option value="666"> - </option>
+    <option value="0">0 Low risk activities</option>
+    <option value="20">20 High risk activities</option>
+  </select>
+
+  <h2>Compliance</h2>
+
+  <label>Food Hygiene & Safety:</label>
+  <select name="hygiene">
+    <option value="666"> - </option>
+    <option value="0">0 Excellent</option>
+    <option value="5">5 Very good</option>
+    <option value="10">10 Satisfactory</option>
+    <option value="15">15 Fair</option>
+    <option value="20">20 Bad</option>
+    <option value="25">25 Very bad</option>
+  </select>
+
+  <br>
+
+  <label>Structural</label>
+  <select name="structure">
+    <option value="666"> - </option>
+    <option value="0">0 Excellent</option>
+    <option value="5">5 Very good</option>
+    <option value="10">10 Satisfactory</option>
+    <option value="15">15 Fair</option>
+    <option value="20">20 Bad</option>
+    <option value="25">25 Very bad</option>
+  </select>
+
+  <h2>Confidence in Managment</h2>
+
+  <label>Confidence in Management:</label>
+  <select name="confidence">
+    <option value="666"> - </option>
+    <option value="0">0 Good record of compliance. Good HACCP. Very good track record</option>
+    <option value="5">5 Reasonable record of compliance. A documented food management system. Good track record</option>
+    <option value="10">10 Satisfactory record. Progress towards a documented food management system</option>
+    <option value="20">20 Varying record, poor appreciation of hazards, no SFBB, lack of training</option>
+    <option value="30">30 Poor track record, little or no appreciation of hazards or controls, no SFBB</option>
+  </select>
+
+
+  <h2>Significance of Risk</h2>
+
+  <label>Significance of Risk:</label>
+  <select name="significance">
+    <option value="666"> - </option>
+    <option value="0">0 No significant risk</option>
+    <option value="20">20 Significant risk</option>
+  </select>
+
+  <br>
+
+  <input type="submit" value="Submit">
+</form>
+
+<button><a href="/">Reset</a></button>
+
