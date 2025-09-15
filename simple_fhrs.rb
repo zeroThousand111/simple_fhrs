@@ -125,6 +125,7 @@ get "/result" do
     redirect "/" # how to go back to a partially filled in start page?
   else
     @risk_rating = calculate_risk_rating
+    @frequency = FREQUENCIES_OF_INSPECTION[@risk_rating.to_sym]
     @food_hygiene_rating = calculate_food_hygiene_rating
     erb :result
   end
