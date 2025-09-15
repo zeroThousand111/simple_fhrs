@@ -108,6 +108,7 @@ get "/result" do
     params[:type].to_i,
     params[:consumers].to_i,
     params[:method].to_i,
+    params[:group].to_i,
     params[:hygiene].to_i,
     params[:structure].to_i,
     params[:confidence].to_i,
@@ -134,9 +135,10 @@ end
 
 =begin
 DEVELOPMENT IDEAS
+ + add the missing section!  Vulnerable persons 0/22
  - create tests in simple_fhrs_test.rb to future proof against regression
    - test out all combinations of possible scores to ensure that the underlying logic to calculate both risk rating and FHRS scores isn't broken?
- - return a string value of inspection frequency as well as the letter score for risk rating for display in :result
+ + return a string value of inspection frequency as well as the letter score for risk rating for display in :result
  - return one of 6 images instead of/in addition to an Integer for the FHRS stars in :result
  - 
 =end
