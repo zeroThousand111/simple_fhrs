@@ -136,9 +136,11 @@ end
 =begin
 DEVELOPMENT IDEAS
  + add the missing section!  Vulnerable persons 0/22
- - create tests in simple_fhrs_test.rb to future proof against regression
+ + create tests in simple_fhrs_test.rb to future proof against regression
    - test out all combinations of possible scores to ensure that the underlying logic to calculate both risk rating and FHRS scores isn't broken?
  + return a string value of inspection frequency as well as the letter score for risk rating for display in :result
+ + add Eric Meyer's CSS reset to main.css
+ - add my own pretty CSS to main.css
  - return one of 6 images instead of/in addition to an Integer for the FHRS stars in :result
  - 
 =end
