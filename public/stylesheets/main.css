@@ -1,7 +1,96 @@
 /* MAIN CSS */
 
 .message {
+  color: blue;
   background: yellow;
 }
 
+/* GLOBAL */
+
+:root {
+  --clr-primary: white;
+  --clr-back: Green;
+}
+
+body {
+  background-color: var(--clr-back);
+  color: var(--clr-primary);
+  font-family: 'Open Sans', sans-serif; 
+  font-size: 1.5;
+  line-height: 1.5;
+}
+
+
+.title,
+footer {
+  text-align: center;
+}
+
+.wrapper {   
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* TEST CSS FROM KP FORMS */
+
+input, button, select, label, a {
+  font: inherit;
+}
+
+input {
+  background-color: var(--clr-back);
+}
+
+input, a {
+  color: var(--clr-primary);
+}
+
+button, .submit {
+  border-color: white;
+  border-width: 5px;
+  background-color: var(--clr-back);
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+form {
+  display: grid;
+  gap: 1rem;
+
+}
+
+.form-group {
+  display: grid;
+  row-gap: 1rem;
+}
+
+.section-group {
+  display: grid;
+}
+
 /* TEST CSS FROM CODEPEN */
+
+h1 {
+  font-size: 2em;
+  line-height: 3;
+  font-weight: 900;
+}
+
+h2 {
+  font-size: 1em;
+  line-height: 3;
+  font-weight: 900;
+}
+
+footer {
+  font-size: 1;
+  font-weight: 100;
+}
+
+#risk-rating,
+#food-hygiene-rating {
+  font-size: 3rem;
+  font-weight: 900;
+  text-align: center;
+}

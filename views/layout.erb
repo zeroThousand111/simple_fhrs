@@ -7,7 +7,12 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="/stylesheets/reset.css">
     <link rel="stylesheet" href="/stylesheets/main.css">
-    <title>Simple FHRS</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <title>Simple FHRS Calculator</title>
   </head>
 
 
@@ -15,6 +20,8 @@
     <% if session[:message] %>
     <p class="message"><%= session.delete(:message) %></p>
     <% end %>
+
+    <h1 class="title">Simple FHRS Calculator</h1>
 
     <%= yield %>
 
