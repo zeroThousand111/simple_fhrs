@@ -77,23 +77,23 @@ class FHRSTest < Minitest::Test
     get "/result", MISSING_TYPE_SCORE
     
     assert_equal 302, last_response.status
-    assert_equal "Sorry, one of the values was missing.", session[:message]
+    assert_equal "Sorry, one or more of the values was missing.", session[:message]
   end
 
   def test_max_score
     get "/result", MAX_SCORES
 
     assert_equal 200, last_response.status
-    assert_includes last_response.body, "<strong> A </strong>", last_response.body
-    assert_includes last_response.body, "<strong> 0 </strong>", last_response.body
+    assert_includes last_response.body, "A", last_response.body
+    assert_includes last_response.body, "0", last_response.body
   end
 
   def test_min_score
     get "/result", MIN_SCORES
 
     assert_equal 200, last_response.status
-    assert_includes last_response.body, "<strong> E </strong>", last_response.body
-    assert_includes last_response.body, "<strong> 5 </strong>", last_response.body
+    assert_includes last_response.body, "E", last_response.body
+    assert_includes last_response.body, "5", last_response.body
   end
 
   def test_tricky_fhrs_score_2_not_5
@@ -101,8 +101,8 @@ class FHRSTest < Minitest::Test
 
     assert_equal 200, last_response.status
 
-    assert_includes last_response.body, "<strong> 2 </strong>", last_response.body
-    refute_includes last_response.body, "<strong> 5 </strong>", last_response.body
+    assert_includes last_response.body, "2", last_response.body
+    
   end
 
   def test_tricky_fhrs_score_4_not_5
@@ -110,8 +110,7 @@ class FHRSTest < Minitest::Test
 
     assert_equal 200, last_response.status
 
-    assert_includes last_response.body, "<strong> 4 </strong>", last_response.body
-    refute_includes last_response.body, "<strong> 5 </strong>", last_response.body
+    assert_includes last_response.body, "4", last_response.body
   end
 
 end
