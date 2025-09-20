@@ -24,6 +24,30 @@ end
 
 # Helper Methods
 
+## Input Collection and Validation
+
+def determine_missing_values(results)
+  results.any? { |result| result == 666 } # "666" is the blank default value in the :start layout
+end
+
+def collect_and_transform_input
+
+  input = [
+    params[:type],
+    params[:consumers],
+    params[:method],
+    params[:group],
+    params[:hygiene],
+    params[:structure],
+    params[:confidence],
+    params[:significance]
+  ]
+
+  input.map { |string| string.to_i } # this means I still can't use `nil` as the signifier for missing values, because I can't call `#to_i` on a `nil` object
+end
+
+## Calculations
+
 =begin
 What is the Risk Rating algorithm?
 1. Sum the seven values
@@ -92,10 +116,6 @@ def calculate_food_hygiene_rating
   [total_score, highest_value_score].min # return the lowest of the two ratings
 end
 
-def missing_values?
-  @all_results.any? { |value| value == 666 } # 666 is the blank default value in the :start layout
-end
-
 # Routes
 
 get "/" do
@@ -104,16 +124,9 @@ end
 
 get "/result" do
 
-  @all_results = [
-    params[:type].to_i,
-    params[:consumers].to_i,
-    params[:method].to_i,
-    params[:group].to_i,
-    params[:hygiene].to_i,
-    params[:structure].to_i,
-    params[:confidence].to_i,
-    params[:significance].to_i
-  ]
+  @all_results = collect_and_transform_input
+
+  missing_values = determine_missing_values(@all_results) # returns true if one or more values is nil
 
   @fhrs_results = [
     params[:hygiene].to_i,
@@ -121,8 +134,8 @@ get "/result" do
     params[:confidence].to_i
   ]
 
-  if missing_values? # returns true if one or more values is nil
-    session[:message] = "Sorry, one of the values was missing."
+  if missing_values 
+    session[:message] = "Sorry, one or more of the values was missing."
     redirect "/" # how to go back to a partially filled in start page?
   else
     @risk_rating = calculate_risk_rating
@@ -135,12 +148,17 @@ end
 
 =begin
 DEVELOPMENT IDEAS
+DONE
  + add the missing section!  Vulnerable persons 0/22
  + create tests in simple_fhrs_test.rb to future proof against regression
-   - test out all combinations of possible scores to ensure that the underlying logic to calculate both risk rating and FHRS scores isn't broken?
  + return a string value of inspection frequency as well as the letter score for risk rating for display in :result
  + add Eric Meyer's CSS reset to main.css
- - add my own pretty CSS to main.css
+ + add my own pretty CSS to main.css
+ 
+ FOR CONSIDERATION
+ - refine CSS with Rya
  - return one of 6 images instead of/in addition to an Integer for the FHRS stars in :result
- - 
+ - add validations to prevent URL parameters being manipulated? But is this really worth it?
+ - find a different way of detecting a missing input value instead of "666" value
+ - create more tests to test out all combinations of possible scores to ensure that the underlying logic to calculate both risk rating and FHRS scores isn't broken
 =end
