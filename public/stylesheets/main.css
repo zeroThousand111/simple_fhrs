@@ -9,7 +9,7 @@
 
 :root {
   --clr-primary: white;
-  --clr-back: Green;
+  --clr-back: green;
 }
 
 body {
@@ -19,7 +19,6 @@ body {
   font-size: 1.5;
   line-height: 1.5;
 }
-
 
 .title,
 footer {
@@ -57,7 +56,6 @@ button, .submit {
 form {
   display: grid;
   gap: 1rem;
-
 }
 
 .form-group {
@@ -69,7 +67,7 @@ form {
   display: grid;
 }
 
-/* TEST CSS FROM CODEPEN */
+/* TYPOGRAPHY */
 
 h1 {
   font-size: 2em;
@@ -77,10 +75,14 @@ h1 {
   font-weight: 900;
 }
 
-h2 {
+h2, legend {
   font-size: 1em;
-  line-height: 3;
+  line-height: 2;
   font-weight: 900;
+}
+
+label {
+  margin-top: 0.5rem;
 }
 
 footer {
@@ -94,3 +96,13 @@ footer {
   font-weight: 900;
   text-align: center;
 }
+
+/* TEST CSS TRYING TO EXPOSE FIELDSET */
+
+fieldset {
+  border-bottom-style: dashed;
+  border-bottom-color: white;
+  border-bottom-width: 0.1rem;
+  padding-bottom: 1rem;
+}
+
