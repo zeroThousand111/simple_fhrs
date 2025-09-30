@@ -5,6 +5,8 @@ require "sinatra"
 require "sinatra/reloader" if development?
 require "tilt/erubi"
 
+also_reload '/stylesheets/main.css' # reload after changes to main CSS stylesheet
+
 # Constants
 
 FREQUENCIES_OF_INSPECTION = {

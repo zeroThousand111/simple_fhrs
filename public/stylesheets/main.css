@@ -11,8 +11,8 @@ body {
   background-color: var(--clr-back);
   color: var(--clr-primary);
   font-family: 'Open Sans', sans-serif; 
-  font-size: 1.5;
-  line-height: 1.5;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
 }
 
 .wrapper {   
@@ -24,11 +24,6 @@ body {
 .message {
   color: blue;
   background: yellow;
-}
-
-.title,
-footer {
-  text-align: center;
 }
 
 /* TEST CSS FROM KP FORMS */
@@ -58,13 +53,31 @@ form {
   gap: 1rem;
 }
 
+fieldset { /* TEST CSS TRYING TO EXPOSE FIELDSET */
+  border-bottom-style: dashed;
+  border-bottom-color: var(--clr-primary);
+  border-bottom-width: 0.1rem;
+  padding-bottom: 1rem;
+}
+
+.section-group {
+  display: grid;
+}
+
 .form-group {
   display: grid;
   row-gap: 1rem;
 }
 
-.section-group {
+.result-group {
   display: grid;
+  row-gap: 1rem;
+  border-bottom-style: dotted;
+  border-bottom-width: 0.1rem;
+  border-bottom-color: var(--clr-primary);
+  margin-top: 1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 /* TYPOGRAPHY */
@@ -86,7 +99,7 @@ label {
 }
 
 footer {
-  font-size: 1;
+  font-size: 1rem;
   font-weight: 100;
 }
 
@@ -94,13 +107,10 @@ footer {
   font-size: 3rem;
   font-weight: 900;
   text-align: center;
+  margin-bottom: 1rem;
 }
 
-/* TEST CSS TRYING TO EXPOSE FIELDSET */
-
-fieldset {
-  border-bottom-style: dashed;
-  border-bottom-color: white;
-  border-bottom-width: 0.1rem;
-  padding-bottom: 1rem;
+.title,
+footer {
+  text-align: center;
 }
