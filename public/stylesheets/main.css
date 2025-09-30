@@ -1,10 +1,5 @@
 /* MAIN CSS */
 
-.message {
-  color: blue;
-  background: yellow;
-}
-
 /* GLOBAL */
 
 :root {
@@ -20,15 +15,20 @@ body {
   line-height: 1.5;
 }
 
-.title,
-footer {
-  text-align: center;
-}
-
 .wrapper {   
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.message {
+  color: blue;
+  background: yellow;
+}
+
+.title,
+footer {
+  text-align: center;
 }
 
 /* TEST CSS FROM KP FORMS */
@@ -90,8 +90,7 @@ footer {
   font-weight: 100;
 }
 
-#risk-rating,
-#food-hygiene-rating {
+#total-score, #risk-rating, #food-hygiene-rating {
   font-size: 3rem;
   font-weight: 900;
   text-align: center;
@@ -105,4 +104,3 @@ fieldset {
   border-bottom-width: 0.1rem;
   padding-bottom: 1rem;
 }
-

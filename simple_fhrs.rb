@@ -60,9 +60,7 @@ What is the FHRS algorithm?
 4. take the lowest of the two scores as the final score
 =end
 
-def calculate_risk_rating
-  puts total = @all_results.sum
-
+def calculate_risk_rating(total)
   if total >= 92
     return "A"
   elsif total >= 72 && total <= 91
@@ -138,7 +136,8 @@ get "/result" do
     session[:message] = "Sorry, one or more of the values was missing."
     redirect "/" # how to go back to a partially filled in start page?
   else
-    @risk_rating = calculate_risk_rating
+    @total_score = @all_results.sum
+    @risk_rating = calculate_risk_rating(@total_score)
     @frequency = FREQUENCIES_OF_INSPECTION[@risk_rating.to_sym]
     @food_hygiene_rating = calculate_food_hygiene_rating
     erb :result
