@@ -1,4 +1,4 @@
-/* MAIN CSS */
+/* MAIN.CSS */
 
 /* GLOBAL */
 
@@ -7,95 +7,111 @@
   --clr-back: green;
 }
 
+/* adjust base font-size for mobile-first layout */
+html { 
+  font-size: 23px;
+}
+
 body {
   background-color: var(--clr-back);
   color: var(--clr-primary);
-  font-family: 'Open Sans', sans-serif; 
-  font-size: 1.5rem;
-  line-height: 1.5rem;
+  font-family: 'Open Sans', sans-serif;
 }
-
-.wrapper {   
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.message {
-  color: blue;
-  background: yellow;
-}
-
-/* TEST CSS FROM KP FORMS */
 
 input, button, select, label, a {
   font: inherit;
 }
 
-input {
-  background-color: var(--clr-back);
+/* LAYOUT */
+
+/* layout.erb */
+
+.outer-wrapper {
+  margin-inline: auto;
+  padding-inline: 150px;
+  max-width: 700px;
+  /* outline: solid red 1px; */
 }
 
-input, a {
-  color: var(--clr-primary);
+footer {
+  margin-block-start: 2rem;
 }
 
-button, .submit {
-  border-color: white;
-  border-width: 5px;
-  background-color: var(--clr-back);
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-}
+/* input.erb */
 
-form {
-  display: grid;
-  gap: 1rem;
-}
+/* form {
+  outline: solid yellow 2px;
+} */
 
-fieldset { /* TEST CSS TRYING TO EXPOSE FIELDSET */
+fieldset {
+  margin-block-start: 1rem;
   border-bottom-style: dashed;
   border-bottom-color: var(--clr-primary);
   border-bottom-width: 0.1rem;
-  padding-bottom: 1rem;
+  padding-bottom: 2rem;
 }
 
-.section-group {
-  display: grid;
+label {
+  margin-block: 0.75rem;
+  display: block;
 }
 
-.form-group {
-  display: grid;
-  row-gap: 1rem;
+select {
+  width: 100%;
 }
+
+/* result.erb */
 
 .result-group {
-  display: grid;
-  row-gap: 1rem;
-  border-bottom-style: dotted;
-  border-bottom-width: 0.1rem;
-  border-bottom-color: var(--clr-primary);
-  margin-top: 1rem;
-  padding-bottom: 1rem;
-  margin-bottom: 1rem;
+  /* outline: 4px yellow solid; */
+  text-align: center;
+  margin-block: 2.5rem;
+}
+
+
+/* BUTTONS & RESET LINK */
+
+a {
+  text-decoration-line: none;
+  color: var(--clr-back);
+}
+
+.btn {
+  display: block;
+  color: var(--clr-back);
+  background-color: var(--clr-primary);
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin: 1rem auto;
+  padding-block: 1rem;
+  padding-inline: 8rem;
+}
+
+.btn:hover {
+  color: var(--clr-back);
+  background-color: var(--clr-primary);
+}
+
+#submit {
+  margin-block-start: 3rem;
 }
 
 /* TYPOGRAPHY */
 
 h1 {
-  font-size: 2em;
+  font-size: 2.5em;
   line-height: 3;
   font-weight: 900;
 }
 
 h2, legend {
-  font-size: 1em;
+  font-size: 1.5em;
   line-height: 2;
   font-weight: 900;
 }
 
 label {
-  margin-top: 0.5rem;
+  font-size: 1.25rem;
 }
 
 footer {
@@ -106,11 +122,19 @@ footer {
 #total-score, #risk-rating, #food-hygiene-rating {
   font-size: 3rem;
   font-weight: 900;
-  text-align: center;
-  margin-bottom: 1rem;
 }
 
 .title,
 footer {
+  text-align: center;
+}
+
+/* ERROR MESSAGE */
+
+.message {
+  font-size: 1.5rem;
+  color: blue;
+  background: yellow;
+  padding-block: 20px;
   text-align: center;
 }
