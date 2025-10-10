@@ -7,9 +7,12 @@
   --clr-back: green;
 }
 
-/* adjust base font-size for mobile-first layout */
+/* adjust base font-size for mobile-first layout then reduce past 1600px viewport width*/
 html { 
   font-size: 23px;
+  @media (width > 1600px) {
+    font-size: 16px;
+  }
 }
 
 body {
@@ -27,10 +30,15 @@ input, button, select, label, a {
 /* layout.erb */
 
 .outer-wrapper {
-  max-inline-size: 700px;
+  /* outline: solid red 1px; */
+  
+  max-inline-size: 1600px;
   margin-inline: auto;
   padding-inline: 150px;
-  /* outline: solid red 1px; */
+
+  @media (width > 1600px) {
+    padding-inline: 0;
+  }
 }
 
 footer {
@@ -39,12 +47,15 @@ footer {
 
 /* input.erb */
 
-/* form {
-  outline: solid yellow 2px;
-} */
+form {
+  /* outline: solid yellow 2px; */
+
+  margin-block-start: 3rem;
+}
 
 fieldset {
-  margin-block-start: 1rem;
+  /* outline: dashed blue 2px; */
+
   border-bottom-style: dashed;
   border-bottom-color: var(--clr-primary);
   border-bottom-width: 0.1rem;
@@ -60,14 +71,29 @@ select {
   width: 100%;
 }
 
+.input-area {
+  /* outline: pink solid 2px; */
+
+  display: grid;
+  gap: 3rem;
+
+  @media (width > 1600px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 /* result.erb */
 
 .result-group {
   /* outline: 4px yellow solid; */
+
   text-align: center;
   margin-block: 2.5rem;
 }
 
+.result-paragraph {
+  margin-block-start: 1.5rem;
+}
 
 /* BUTTONS & RESET LINK */
 
@@ -82,12 +108,14 @@ a {
   background-color: var(--clr-primary);
   font-weight: bold;
   font-size: 1.5rem;
-  margin: 1rem auto;
-  padding-block: 1rem;
-  padding-inline: 8rem;
+  margin: 3rem auto;
+  width: 18rem;
+  padding-block: 1.5rem;
 }
 
-.btn:hover {
+/* this isn't working yet */
+.btn:hover,
+.btn:focus-visible {
   color: var(--clr-back);
   background-color: var(--clr-primary);
 }
@@ -95,18 +123,20 @@ a {
 #submit {
   margin-block-start: 3rem;
 }
+/* 
+#reset {
+  margin-block-start: 3rem;
+} */
 
 /* TYPOGRAPHY */
 
 h1 {
   font-size: 2.5em;
-  line-height: 3;
   font-weight: 900;
 }
 
 h2, legend {
   font-size: 1.5em;
-  line-height: 2;
   font-weight: 900;
 }
 
