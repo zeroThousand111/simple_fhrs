@@ -11,6 +11,11 @@ body {
   padding-block: 50px;
 }
 
+img {
+  display: block;
+  width: 100%;
+}
+
 /* adjust base font-size for mobile-first layout then reduce past 1600px viewport width*/
 html { 
   font-size: 23px;
@@ -99,6 +104,11 @@ select {
   margin-block-start: 1.5rem;
 }
 
+.image-wrapper {
+  max-width: 600px;
+  margin: 2.5rem auto;
+}
+
 /* BUTTONS & RESET LINK */
 
 .btn {
@@ -133,7 +143,6 @@ select {
   /* outline: 5px yellow solid; */
 }
 
-/* this is working now but I need to extend the <a> text color change to work over the btn:hover i.e. over button itself */
 .btn:hover,
 .btn:focus-visible {
   color: var(--clr-back);
@@ -141,9 +150,9 @@ select {
   outline: 5px solid var(--clr-back);
 }
 
-.btn a:hover {
+/* .btn a:hover {
   color: var(--clr-back);
-}
+} */
 
 #submit {
   margin-block-start: 3rem;

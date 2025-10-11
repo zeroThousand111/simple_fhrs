@@ -15,6 +15,15 @@ FREQUENCIES_OF_INSPECTION = {
   E: "Alternative enforcement strategy every 3 years"
 }.freeze
 
+FHRS_IMAGE_URLS = {
+  5 => "/images/version1-badges-5.svg",
+  4 => "/images/version1-badges-4.svg",
+  3 => "/images/version1-badges-3.svg",
+  2 => "/images/version1-badges-2.svg",
+  1 => "/images/version1-badges-1.svg",
+  0 => "/images/version1-badges-0.svg"
+}.freeze
+
 # Config
 
 configure do
@@ -140,6 +149,7 @@ get "/result" do
     @risk_rating = calculate_risk_rating(@total_score)
     @frequency = FREQUENCIES_OF_INSPECTION[@risk_rating.to_sym]
     @food_hygiene_rating = calculate_food_hygiene_rating
+    @fhrs_image_url = FHRS_IMAGE_URLS[@food_hygiene_rating]
     erb :result
   end
 
@@ -153,10 +163,10 @@ DONE
  + return a string value of inspection frequency as well as the letter score for risk rating for display in :result
  + add Eric Meyer's CSS reset to main.css
  + add my own pretty CSS to main.css
+ + use flexbox and/or grid properties to make the input.erb more responsive to wide computer screens (but keep mobile-first approach)
  
  FOR CONSIDERATION
  - refine CSS with Rya
- - use flexbox and/or grid properties to make the input.erb more responsive to wide computer screens (but keep mobile-first approach)
  - return one of 6 images instead of/in addition to an Integer for the FHRS stars in :result
  - add validations to prevent URL parameters being manipulated? But is this really worth it?
  - find a different way of detecting a missing input value instead of "666" value
