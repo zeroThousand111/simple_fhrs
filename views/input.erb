@@ -1,6 +1,6 @@
 <!-- input.erb -->
 
-<form method="get" action="/result" name="input">
+<form method="get" action="/result" name="input" id="input">
   <div class="input-area">
     <fieldset name="potential-hazard" form="input">
       <legend>Potential Hazard</legend>
@@ -90,9 +90,11 @@
     </fieldset>
   </div>
   
-  <input class="btn" id="submit" type="submit" value="Submit">
-  
+  <!--should I use an input element or button here? -->
+  <!--<input class="btn" id="submit" type="submit" value="Submit">-->
+
 </form>
 
-<button class="btn" id="reset"><a href="/">Reset</a></button>
+<button class="btn" form="input" id="submit">Submit</button>
 
+<button class="btn" onclick="location.href='/'">Restart</button>

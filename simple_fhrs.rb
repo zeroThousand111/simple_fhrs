@@ -133,7 +133,7 @@ get "/result" do
   ]
 
   if missing_values 
-    session[:message] = "Sorry, one or more of the values was missing."
+    session[:message] = "Sorry, one or more of the values was missing. Press Restart."
     redirect "/" # how to go back to a partially filled in start page?
   else
     @total_score = @all_results.sum

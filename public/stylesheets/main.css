@@ -7,6 +7,10 @@
   --clr-back: green;
 }
 
+body {
+  padding-block: 50px;
+}
+
 /* adjust base font-size for mobile-first layout then reduce past 1600px viewport width*/
 html { 
   font-size: 23px;
@@ -97,32 +101,54 @@ select {
 
 /* BUTTONS & RESET LINK */
 
-a {
-  text-decoration-line: none;
-  color: var(--clr-back);
-}
-
 .btn {
   display: block;
-  color: var(--clr-back);
-  background-color: var(--clr-primary);
+  box-sizing: border-box;
+  color: var(--clr-primary);
+  background-color: var(--clr-back);
   font-weight: bold;
   font-size: 1.5rem;
   margin: 3rem auto;
   width: 18rem;
   padding-block: 1.5rem;
+  border: 5px solid var(--clr-primary);
+  border-radius: 50px;
+  text-align: center;
 }
 
-/* this isn't working yet */
+.btn ul {
+  font-size: 0;
+  width: 100%;
+}
+
+.btn li {
+  /* display: inline-block; */
+  font-size: 1.5rem;
+}
+
+.btn a {
+  text-decoration-line: none;
+  color: var(--clr-primary);
+  display: inline-block;
+  /* outline: 5px yellow solid; */
+}
+
+/* this is working now but I need to extend the <a> text color change to work over the btn:hover i.e. over button itself */
 .btn:hover,
 .btn:focus-visible {
   color: var(--clr-back);
   background-color: var(--clr-primary);
+  outline: 5px solid var(--clr-back);
+}
+
+.btn a:hover {
+  color: var(--clr-back);
 }
 
 #submit {
   margin-block-start: 3rem;
 }
+
 /* 
 #reset {
   margin-block-start: 3rem;
@@ -167,4 +193,5 @@ footer {
   background: yellow;
   padding-block: 20px;
   text-align: center;
+  margin-block-end: 50px;
 }
