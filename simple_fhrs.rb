@@ -164,10 +164,10 @@ DONE
  + add Eric Meyer's CSS reset to main.css
  + add my own pretty CSS to main.css
  + use flexbox and/or grid properties to make the input.erb more responsive to wide computer screens (but keep mobile-first approach)
+ + return one of 6 images instead of/in addition to an Integer for the FHRS stars in :result
  
  FOR CONSIDERATION
  - refine CSS with Rya
- - return one of 6 images instead of/in addition to an Integer for the FHRS stars in :result
  - add validations to prevent URL parameters being manipulated? But is this really worth it?
  - find a different way of detecting a missing input value instead of "666" value
  - create more tests to test out all combinations of possible scores to ensure that the underlying logic to calculate both risk rating and FHRS scores isn't broken
