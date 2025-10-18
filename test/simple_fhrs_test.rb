@@ -30,7 +30,7 @@ MIN_SCORES = {
 }
 
 MISSING_TYPE_SCORE = {
-    type: "666",
+    type: "",
     consumers: "0",
     method: "0", 
     group: "0",
@@ -77,7 +77,7 @@ class FHRSTest < Minitest::Test
     get "/result", MISSING_TYPE_SCORE
     
     assert_equal 302, last_response.status
-    assert_equal "Sorry, one or more of the values was missing.", session[:message]
+    assert_equal "Sorry, one or more of the values was missing. Press Restart.", session[:message]
   end
 
   def test_max_score

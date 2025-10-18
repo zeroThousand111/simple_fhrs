@@ -36,12 +36,11 @@ end
 ## Input Collection and Validation
 
 def determine_missing_values(results)
-  results.any? { |result| result == 666 } # "666" is the blank default value in the :start layout
+  results.any? { |result| result.nil? } || results.any? { |result| result == "" }
 end
 
-def collect_and_transform_input
-
-  input = [
+def collect_input
+  [
     params[:type],
     params[:consumers],
     params[:method],
@@ -51,9 +50,7 @@ def collect_and_transform_input
     params[:confidence],
     params[:significance]
   ]
-
-  input.map { |string| string.to_i } # this means I still can't use `nil` as the signifier for missing values, because I can't call `#to_i` on a `nil` object
-end
+end 
 
 ## Calculations
 
@@ -131,44 +128,46 @@ end
 
 get "/result" do
 
-  @all_results = collect_and_transform_input
+  # collect input from params array and put them into an all results array
+  all_results_as_strings = collect_input
 
-  missing_values = determine_missing_values(@all_results) # returns true if one or more values is nil
-
-  @fhrs_results = [
-    params[:hygiene].to_i,
-    params[:structure].to_i,
-    params[:confidence].to_i
-  ]
+  # validation that all values submitted and none left blank
+  missing_values = determine_missing_values(all_results_as_strings) # returns true if one or more values is nil or an empty string
 
   if missing_values 
     session[:message] = "Sorry, one or more of the values was missing. Press Restart."
-    redirect "/" # how to go back to a partially filled in start page?
-  else
-    @total_score = @all_results.sum
-    @risk_rating = calculate_risk_rating(@total_score)
-    @frequency = FREQUENCIES_OF_INSPECTION[@risk_rating.to_sym]
-    @food_hygiene_rating = calculate_food_hygiene_rating
-    @fhrs_image_url = FHRS_IMAGE_URLS[@food_hygiene_rating]
-    erb :result
+    redirect "/"
   end
 
+  @all_results = all_results_as_strings.map { |string| string.to_i } # transforms numeric Strings from input.erb into Integers
+
+  @fhrs_results = @all_results[4..6] # a sub-set of 3 of values from indices 4 to 6
+
+  @total_score = @all_results.sum
+  @risk_rating = calculate_risk_rating(@total_score)
+  @frequency = FREQUENCIES_OF_INSPECTION[@risk_rating.to_sym]
+  @food_hygiene_rating = calculate_food_hygiene_rating
+  @fhrs_image_url = FHRS_IMAGE_URLS[@food_hygiene_rating]
+  erb :result
 end
 
 =begin
 DEVELOPMENT IDEAS
+
 DONE
- + add the missing section!  Vulnerable persons 0/22
- + create tests in simple_fhrs_test.rb to future proof against regression
- + return a string value of inspection frequency as well as the letter score for risk rating for display in :result
- + add Eric Meyer's CSS reset to main.css
- + add my own pretty CSS to main.css
- + use flexbox and/or grid properties to make the input.erb more responsive to wide computer screens (but keep mobile-first approach)
- + return one of 6 images instead of/in addition to an Integer for the FHRS stars in :result
++ add the missing section!  Vulnerable persons 0/22;
++ create tests in simple_fhrs_test.rb to future proof against regression;
++ return a string value of inspection frequency as well as the letter score for risk rating for display in :result;
++ add Eric Meyer's CSS reset to main.css;
++ add my own pretty CSS to main.css;
++ use flexbox and/or grid properties to make the input.erb more responsive to wide computer screens (but keep mobile-first approach);
++ return one of 6 images instead of/in addition to an Integer for the FHRS stars in :result;
++ fix the major validation fail that allows empty values to be entered!
++ add `required` boolean value in each <select> element in input.erb for better feedback to user that no input can be left empty.  This prevents the form being submitted with any empty values;
++ find a different way of detecting a missing input value instead of "666" value (Can I used the typical placeholder value of "" instead?) But I cannot use `String#to_i` on nil values or empty string values or alphabetic string values in the method `collect_and_transform_input`, because they will return the Integer `0`;
  
- FOR CONSIDERATION
- - refine CSS with Rya
- - add validations to prevent URL parameters being manipulated? But is this really worth it?
- - find a different way of detecting a missing input value instead of "666" value
- - create more tests to test out all combinations of possible scores to ensure that the underlying logic to calculate both risk rating and FHRS scores isn't broken
+FOR CONSIDERATION
+- refine CSS with Rya;
+- add validations to prevent URL parameters being manipulated to non-selectable values? But is this really worth it?;
+- create more tests to test out all combinations of possible scores to ensure that the underlying logic to calculate both risk rating and FHRS scores isn't broken;
 =end
